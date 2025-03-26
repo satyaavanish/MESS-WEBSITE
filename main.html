@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Menu Formation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color:black;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://t3.ftcdn.net/jpg/05/01/28/98/360_F_501289857_UBgHhxSDzD5m24HsQZ52uDT9KMDi3WQd.jpg")
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0px 0px 40px rgba(224,135, 0.4);
+            width: 400px;
+            max-height: 60%;
+            overflow: auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        label {
+            font-weight: bold;
+            font-size:large;
+            width: 45%;
+        }
+        input, select {
+            width: 50%;
+            padding: 8px;
+            border:2px solid black;
+            border-radius: 20px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100px;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        .hidden {
+            display: none;
+        }
+        button[type="reset"]
+        {
+            background: red;
+        }
+        h2
+        {
+            color: wheat;
+            text-decoration:underline;
+            text-decoration-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>COMPLETE YOUR PROFILE</h2>
+        <form id="Form">
+            <div id="step1">
+                <div class="form-group">
+                    <label for="regNo">Registration Number:</label>
+                    <input type="text" id="regNo" name="regNo" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="number">Mobile Number:</label>
+                    <input type="text" id="number" name="number"  maxlength="10">
+                </div>
+                <button type="button" onclick="nextStep()">Next  &rAarr;</button>
+            </div>
+            
+            <div id="step2" class="hidden">
+                <button type="button" onclick="prevStep()"> &lAarr; Back</button>
+                <div class="form-group">
+                    <label for="block">Block Number:</label>
+                    <select name="block" id="block">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="B-Annex">B Annex</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="D-Annex">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                        <option value="L">L</option>
+                        <option value="L-Annex">L-Annex</option>
+                        <option value="M">M</option>
+                        <option value="N">N</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                        <option value="R">R</option>
+                        <option value="S">S</option>
+                        <option value="T">T</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="room">Room Number:</label>
+                    <input type="text" id="room" name="room" required>
+                </div>
+                <div class="form-group">
+                    <label for="messName">Dining Mess Name:</label>
+                    <select name="messName" id="messName">
+                        <option value="MAX">MAX</option>
+                        <option value="ZEN">ZEN</option>
+                        <option value="RPL">RPL</option>
+                        <option value="SKC">SKC</option>
+                        <option value="GRC">GRC</option>
+                        <option value="SRRC">SRRC</option>
+                        <option value="RRC">RRC</option>
+                        <option value="FFPL">FFPL</option>
+                        <option value="PR">PR</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="messType">Type of Mess:</label>
+                    <select id="messType" name="messType" required>
+                        <option value="Veg">Veg</option>
+                        <option value="Non-Veg">Non-Veg</option>
+                        <option value="Special">Special</option>
+                        <option value="Night Mess">Night Mess</option>
+                    </select>
+                </div>
+                <button type="reset" onclick="prevStep()">Reset</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("Form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const formData = {
+            regNo: document.getElementById("regNo").value,
+            name: document.getElementById("name").value,
+            block: document.getElementById("block").value,
+            room: document.getElementById("room").value,
+            messName: document.getElementById("messName").value,
+            messType: document.getElementById("messType").value,
+            number:document.getElementById("number").value
+        };
+        localStorage.setItem("User", JSON.stringify(formData));
+        window.location.href = "main2.html"; 
+    });
+        function nextStep() {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+        }
+        
+        function prevStep() {
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step1').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

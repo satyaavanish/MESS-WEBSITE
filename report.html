@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Options & Review</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h2 {
+            color: #333;
+        }
+        .report-options {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .report-options label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .export-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        button {
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        #exportExcel {
+            background-color: #28a745;
+            color: white;
+        }
+        #exportExcel:hover {
+            background-color: #218838;
+        }
+        #exportPdf {
+            background-color: #dc3545;
+            color: white;
+        }
+        #exportPdf:hover {
+            background-color: #c82333;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        #back {
+            background-color: #6c757d;
+            color: white;
+        }
+        #back:hover {
+            background-color: #5a6268;
+        }
+        #submit {
+            background-color: #007bff;
+            color: white;
+        }
+        #submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><i class="fas fa-chart-bar"></i> Report Options & Review</h2>
+        <p>Select report type(s) to generate:</p>
+
+        <div class="report-options">
+            <label><input type="checkbox" value="Student-wise Report"> Student-wise Report</label>
+            <label><input type="checkbox" value="Monthly Report"> Monthly Report</label>
+            <label><input type="checkbox" value="Weekly Report"> Weekly Report</label>
+            <label><input type="checkbox" value="Meal-wise Report"> Meal-wise Report</label>
+        </div>
+
+        <p>Export Options:</p>
+        <div class="export-buttons">
+            <button id="exportExcel"><i class="fas fa-file-excel"></i> Export to Excel</button>
+            <button id="exportPdf"><i class="fas fa-file-pdf"></i> Export to PDF</button>
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="location.href='main2.html'" style=" background-color: #28a745;color: white;"><i class="fas fa-arrow-left"></i> Back</button>
+            <button id="submit"><i class="fas fa-paper-plane"></i> Review & Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("exportExcel").addEventListener("click", function() {
+            alert("Exporting to Excel...");
+        });
+
+        document.getElementById("exportPdf").addEventListener("click", function() {
+            alert("Exporting to PDF...");
+        });
+
+         
+
+        document.getElementById("submit").addEventListener("click", function() {
+            let selectedReports = [];
+            document.querySelectorAll(".report-options input:checked").forEach((checkbox) => {
+                selectedReports.push(checkbox.value);
+            });
+
+            if (selectedReports.length === 0) {
+                alert("Please select at least one report!");
+            } else {
+                alert("Submitting reports: " + selectedReports.join(", "));
+            }
+        });
+    </script>
+</body>
+</html>

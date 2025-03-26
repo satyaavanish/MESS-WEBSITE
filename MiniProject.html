@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="signIn">
+        <center><h1>LOGIN FORM</h1>
+            <a href="otp.html"><button class="buttons" onclick="send()" id="phonesignIn">Sign in With Number</button></a>
+            <button class="buttons" onclick="send()" id="googleSignIn">Sign in with Google</button>
+            <button id="signOut"  style="display: none;">Sign Out</button>
+            <p id="userDetails"></p>
+        </center>
+    </div>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBuZxQ84PZUWqvEMO4OYTeyHZOHcLlJGv8",
+            authDomain: "mess-96687.firebaseapp.com",
+            projectId: "mess-96687",
+            storageBucket: "mess-96687.firebasestorage.app",
+            messagingSenderId: "801695052146",
+            appId: "1:801695052146:web:2841ab64c5ae7a58146deb",
+            measurementId: "G-MHSX7LTV0P"
+        };
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+        document.getElementById("googleSignIn").addEventListener("click", async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            document.getElementById("userDetails").innerHTML = `Signed in as: ${user.displayName} (${user.email})`;
+            window.location.href="main.html";
+            document.getElementById("googleSignIn").style.display = "none";
+            document.getElementById("signOut").style.display = "block";
+        } catch (error) {
+            console.error("Error signing in:", error);
+        }
+});
+        document.getElementById("signOut").addEventListener("click", async () => {
+            try {
+                await signOut(auth);
+                document.getElementById("userDetails").innerHTML = "Signed out";
+                document.getElementById("googleSignIn").style.display = "block";
+                document.getElementById("signOut").style.display = "none";
+            } catch (error) {
+                console.error("Error signing out:", error);
+            }
+        });
+    </script>
+
+</body>
+</html> 
+ 

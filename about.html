@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .about-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 50px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            margin: 50px auto;
+            border-radius: 10px;
+        }
+        .about-text {
+            flex: 1;
+            padding: 20px;
+        }
+        .about-images {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flip-card {
+            width: 200px;
+            height: 250px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 8px black;
+        }
+
+        .flip-card-front {
+            background-size: cover;
+            background-position: center;
+        }
+        .flip-card-back {
+            background:white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotateY(180deg);
+        }
+        .flip-card-back a {
+            color:black;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        a{
+            color: black;
+        }
+        .flip-card-back a:hover {
+            text-decoration: underline;
+        }
+        button:hover
+        {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="location.href='main2.html'" style="color: black;float: inline-start;background: aqua;padding: 5px;margin-left: 10px;border-radius: 10px;cursor: pointer;">GO BACK</button>
+    <div class="about-container">
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>Welcome to our website! We are dedicated to providing the best experience for our users.</p>
+            <p>Our Mess Management App is designed to streamline and enhance the dining experience for students and residents.</p>
+            <p>It allows users to view daily menus, submit complaints, give meal suggestions, and manage their dining preferences efficiently.</p>
+            <p>Our team is passionate about creating quality content and innovative solutions to meet your needs.</p>
+        </div>
+        <div class="about-images">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background-image: url('poovanranjan.jpg');"></div>
+                    <div class="flip-card-back">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYqE3asP0YRPRnR6U3BS85jeB2u7UWPrmrzA&s" width="20px" alt=""><a href="https://www.linkedin.com/in/poovannaraajanep06" target="_blank">LINKED IN</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background-image: url('avanish.jpg');"></div>
+                    <div class="flip-card-back">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYqE3asP0YRPRnR6U3BS85jeB2u7UWPrmrzA&s" width="20px" alt=""><a href="www.linkedin.com/in/satya-avanish-pulavarthi" target="_blank">LINKED IN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

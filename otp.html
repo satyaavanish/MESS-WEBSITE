@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUMBER SIGNIN</title>
+    <link rel="stylesheet" href="num.css">
+</head>
+<body>
+    <button id="GO" onclick="location.href='MiniProject.html'">GO BACK</button>
+    <div class="form">
+        <center>
+            <div class="ins">
+                <h2>LOGIN WITH NUMBER</h2>
+                <input type="text" name="PHONE-NUMBER" id="tel" value="+91 " maxlength="15" required><br><br>
+                <input type="text" id="otp" placeholder="ENTER OTP"><br>
+                <button onclick="send()">SEND OTP</button>
+                <button style="background-color:green;" onclick="verify()">VERIFY OTP</button>
+            </div>
+        </center>
+    </div>
+    <script>
+        let otp;
+        function send()
+        {
+           otp= Math.floor(Math.random()*1000000);
+           if(otp.toString().length!==6)
+           {
+                 send();
+           }
+                let phoneNumber = document.getElementById("tel").value;
+                if(phoneNumber.length!=14)
+                {
+                    alert("Please enter a valid 10-digit phone number");
+                    return;
+                }
+                window.alert("OTP is "+otp);
+        }
+        function verify()
+        {
+            let value=document.getElementById("otp").value;
+            if (!value) {
+            alert("Please enter the OTP.");
+            return;
+        }
+            if(value!=otp)
+            {
+                window.alert("OTP is wrong");
+            }
+            else
+            {
+                window.location.href='main.html';
+            }
+        }
+    </script>
+</body>
+</html> 
+ 

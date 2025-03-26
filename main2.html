@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Navigation</title>
+    <link rel="stylesheet" href="mai.css">
+</head>
+<body>
+    <nav>
+        <div class="menu">
+            <ol>HOME</ol>
+            <ol id="tod">TODAY MESS</ol>
+            <ol id="comp">COMPLAINT BOX</ol>
+            <a href="report.html"><ol>REPORT</ol></a>
+            <a href="about.html"><ol>ABOUT US</ol></a>
+        </div>
+        <ol id="profileBtn">☰ PROFILE</ol>
+    </nav>
+    <form id="complaint">
+        <h2 style="color:green;text-decoration:underline;text-decoration-color:red;margin-bottom: 10px;">Suggestion Form</h2>
+        <div class="midd">
+        <label for="mealtype">Meal Type:</label>
+        <select name="mealtype" id="mealtype">
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+            <option value="Special">Special</option>
+            <option value="Night Mess">Night Mess</option>
+        </select></div><br>
+        <div class="midd">
+        <label for="production">Feasability for Mass production:</label>
+        <select name="production" id="production">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+        </select>
+    </div><br>
+        <label for="Suggestion">Food Item Suggestion:</label>
+        <textarea name="Suggestion" id="Suggestion" cols="30" rows="10" placeholder="Give your Suggestion........"></textarea><br>
+        <button type="reset">Reset</button>
+    <button type="submit">Register a Complaint</button>
+    </form>
+    <div id="profileDropdown" class="profile-container"></div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const complaintForm = document.getElementById("complaint");
+    const complaintBtn = document.getElementById("comp");
+    const homeSection = document.querySelector(".home");
+    const todaySection = document.querySelector(".today");
+    const todayBtn = document.getElementById("tod");
+    todaySection.style.display = "none";
+    
+    complaintForm.style.display = "none";
+    complaintBtn.addEventListener("click", function() {
+        complaintForm.style.display = "block";
+        homeSection.style.display="none";
+        todaySection.style.display = "none";
+    });
+
+    todayBtn.addEventListener("click", function() {
+        complaintForm.style.display = "none";
+        homeSection.style.display = "none";
+        todaySection.style.display = "block";
+    });
+    document.addEventListener("click", function(event) {
+        if (!complaintForm.contains(event.target) && event.target !== complaintBtn) {
+            complaintForm.style.display = "none";
+            if (todaySection.style.display !== "block") {
+                homeSection.style.display = "block";
+            }
+        }
+    });
+ 
+    document.addEventListener("click", function(event) {
+        if (!todaySection.contains(event.target) && event.target !== todayBtn) {
+            todaySection.style.display = "none";
+            homeSection.style.display = "block";
+        }
+    });
+
+    const userData = JSON.parse(localStorage.getItem("User"));
+    const profileDropdown = document.getElementById("profileDropdown");
+    if (userData) {
+        profileDropdown.innerHTML = `
+       <h2 style="color:black; padding: 10px; text-decoration: underline; text-decoration-color:red;">PROFILE</h2>
+            <p><strong>Reg Number:</strong> ${userData.regNo.toUpperCase()}</p>
+            <p><strong>Name:</strong> ${userData.name.toUpperCase()}</p>
+            <p><strong>Mobile Number:</strong> ${userData.number}</p>
+            <p><strong>Block Number:</strong> ${userData.block} Block</p>
+            <p><strong>Room Number:</strong> ${userData.room}</p>
+            <p><strong>Dining Mess:</strong> ${userData.messName}</p>
+            <p><strong>Mess Type:</strong> ${userData.messType}</p>
+            <center> <button id="signOutBtn" style="background:red">Sign Out</button></center>
+        `;
+        document.getElementById("signOutBtn").addEventListener("click", function() {
+        localStorage.removeItem("User"); // Clears user data
+        window.location.href = "miniproject.html"; // Redirects to miniproject.html
+    });
+    } else {
+        profileDropdown.innerHTML = "<p>No profile data found.</p>";
+    }
+    //  document.getElementById("name").textContent=`${userData.messName} Today's mess`
+ 
+    document.getElementById("profileBtn").addEventListener("click", function() {
+        profileDropdown.classList.toggle("show");
+    });
+
+   
+    document.addEventListener("click", function(event) {
+        if (!profileDropdown.contains(event.target) && event.target.id !== "profileBtn") {
+            profileDropdown.classList.remove("show");
+        }
+    });
+});
+
+    </script>  
+     <div class="home">
+           <div class="rotate2"><br><br>
+            <h3 style="text-decoration: underline;">Benifits of Healthy Food</h3>
+            <ul>
+                <li>Boosts immunity and helps fight diseases.</li>
+                <li>Improves energy levels and overall well-being.</li>
+                <li>Supports brain function and mental clarity.</li>
+                <li>Aids digestion and maintains a healthy weight.</li>
+              
+            </ul>
+        </div>
+        <div class="rotate3"><br><br>
+           <ul><li>Stay Active Regular physical activity helps maintain a healthy weight, reduces the risk of chronic diseases, and improves mental health.<li><br><br>
+            <li>Aim for at least 30 minutes of moderate exercise most days of the week.</li>
+           </ol>
+        </div>
+    </div>
+    <div class="today">
+        <!-- <p><span id="name"></span>mess</p> -->
+        <div class="meal">
+            <h2>🍳 Breakfast</h2><br>
+            <ul>
+                <li>Idli with Sambar & Chutney</li><br>
+                <li>Puri with Aloo Curry</li><br>
+                <li>Bread Butter & Jam</li><br>
+                <li>Oats with Fruits</li><br>
+                <li>Tea/Coffee/Milk</li>
+            </ul>
+        </div>
+    
+        <div class="meal">
+            <center>
+            <h2>🍛 Lunch</h2><br>
+            <ul>
+                <li>Rice with Dal & Vegetable Curry</li><br>
+                <li>Paneer Butter Masala</li><br>
+                <li>Rasam & Sambar</li><br>
+                <li>Curd & Pickle</li><br>
+                <li>Chapati with Mixed Veg</li>
+            </ul>
+        </div>
+    
+        <div class="meal">
+            <h2>🍩 Snacks</h2><br>
+            <ul>
+                <li>Samosa with Chutney</li><br>
+                <li>Bread Omelette</li><br>
+                <li>Masala Tea</li><br>
+                <li>Biscuits</li><br>
+                <li>Coffee</li>
+            </ul>
+        </div>
+    
+        <div class="meal">
+            <h2>🍲 Dinner</h2><br>
+            <ul>
+                <li>Jeera Rice with Dal Tadka</li><br>
+                <li>Sambar Rice</li><br>
+                <li>Chapati with Bhindi Fry</li><br>
+                <li>Sweet (Gulab Jamun)</li><br>
+                <li>Buttermilk</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>
