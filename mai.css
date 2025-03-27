@@ -187,7 +187,7 @@ li
         height: 900px;
     }
     .rotate2 {
-        width: 200px; /* Adjust width for smaller screens */
+        width: 200px;  
         height: 250px;
         top: 60%;
         right: -100%;
@@ -201,17 +201,17 @@ li
             opacity: 0;
         }
         100% {
-            right: 5%; /* Adjust final position for mobile */
+            right: 5%;  
             opacity: 1;
         }
     }
 }
 @keyframes moveInFromRight {
     0% {
-        right: 0%; /* Start position off-screen */
+        right: 0%;  
     }
     100% {
-        right: 15%; /* End position on-screen */
+        right: 15%;  
     }
 }
 
@@ -228,10 +228,10 @@ li
 }
 @media screen and (max-width: 768px) {
     .rotate3 {
-        width: 20px; /* Reduce width for smaller screens */
+        width: 20px;  
         height: 250px;
         font-size: medium;
-        top: 40%; /* Adjust position */
+        top: 40%;  
         animation: slideInMobile 1s ease-out forwards;
     }
 
@@ -241,13 +241,13 @@ li
             opacity: 0;
         }
         100% {
-            transform: translateX(5%); /* Adjust position for mobile */
+            transform: translateX(5%);  
             opacity: 1;
         }
     }
 }
 .rotate3 {
-    background-color: rgba(255, 255, 255, 0.5); /* 50% transparent white */
+    background-color: rgba(255, 255, 255, 0.5); 
     backdrop-filter: blur(10px);
     width: 300px;
     height: 300px;
@@ -257,8 +257,8 @@ li
     font-size: larger;
     border-radius: 20px;
     color: black;
-    box-shadow: 5px 5px 20px rgba(221, 36, 118, 0.6); /* Soft Glow */
-    transform: translateX(-100%); /* Start off-screen to the left */
+    box-shadow: 5px 5px 20px rgba(221, 36, 118, 0.6);  
+    transform: translateX(-100%); 
     animation: slideIn 1s ease-out forwards;
 }
 .today
@@ -281,11 +281,11 @@ li
     margin-top: 30px;
     margin-right: 20px;
     box-shadow: 3px 3px 10px rgba(255, 0, 0, 0.2);
-    opacity: 0; /* Start with elements hidden */
+    opacity: 0; 
     animation: slideInFromRight 0.5s ease-out forwards;
 }
 
-/* Apply incremental delays */
+ 
 .meal:nth-child(1) {
     animation-delay: 0.7s;
 }
