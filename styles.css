@@ -82,5 +82,5 @@ body
    background-image: url("https://t3.ftcdn.net/jpg/05/01/28/98/360_F_501289857_UBgHhxSDzD5m24HsQZ52uDT9KMDi3WQd.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 809px;
+      height: 100vh;
 }
